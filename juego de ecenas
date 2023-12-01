@@ -1,0 +1,577 @@
+#include <stdio.h>
+
+// Prototipos de funciones
+void inicializarMatrizDesdeArchivo();
+void guardarMatrizEnArchivo();
+void mostrarMatriz();
+void escenaA();
+void escenaB1();
+void escenaB2();
+void escenaB3();
+void escenaC1();
+void escenaC2();
+void escenaC3();
+void escenaD1();
+void escenaD2();
+void escenaD3();
+void escenaE1();
+void escenaE2();
+void escenaE3();
+void escenaF1();
+void escenaF2();
+void escenaF3();
+void escenaG1();
+void escenaA2();
+void escenaA3();
+
+// Matriz de 18x18
+int matrizJuego[18][18];
+
+int main() {
+    // Inicializa la matriz desde un archivo o crea una nueva si no existe
+    inicializarMatrizDesdeArchivo();
+
+     printf("¡Bienvenido al cuarto de tu primo! Donde tenemos de todos tipos de sustancias. 🚬💨\n");
+
+    // Comienza con la primera escena
+    escenaA();
+
+    // Guarda la matriz en el archivo al final del juego
+    guardarMatrizEnArchivo();
+
+    return 0;
+}
+
+void mostrarMatriz() {
+    printf("\nEstado actual del juego:\n");
+
+    for (int i = 0; i < 18; i++) {
+        for (int j = 0; j < 18; j++) {
+            printf("%d ", matrizJuego[i][j]);
+        }
+        printf("\n");
+    }
+}
+void inicializarMatrizDesdeArchivo() {
+    FILE *archivo = fopen("matriz.txt", "rb");
+
+    // Si el archivo existe, carga la matriz desde el archivo
+    if (archivo != NULL) {
+        for (int i = 0; i < 18; i++) {
+            for (int j = 0; j < 18; j++) {
+                fscanf(archivo, "%d", &matrizJuego[i][j]);
+            }
+        }
+        fclose(archivo);
+    } else {
+        // Si el archivo no existe, inicializa la matriz con espacio vacío
+        for (int i = 0; i < 18; i++) {
+            for (int j = 0; j < 18; j++) {
+                matrizJuego[i][j] = 0;
+            }
+        }
+    }
+}
+
+void guardarMatrizEnArchivo() {
+    FILE *archivo = fopen("matriz.txt", "wb");
+
+    // Guarda la matriz en el archivo
+    for (int i = 0; i < 18; i++) {
+        for (int j = 0; j < 18; j++) {
+            fprintf(archivo, "%d ", matrizJuego[i][j]);
+        }
+        fprintf(archivo, "\n");
+    }
+
+    fclose(archivo);
+}
+void escenaA() {
+    printf("\nEstás llegando a la casa de tu tía...\n");
+    printf("Tu primo sabe que llegas y te dice: 'Ve recargando la bong y date un pipazo para irnos adentrando en esta aventura'. 🌿💨\n");
+    printf("¿Qué haces?\n");
+    printf("_____________________________________\n");
+    // Opciones para la siguiente escena
+    printf("1. ¡Te das un bongazo! ¿Qué podría salir mal con un bongazo tan relajado? 😎\n");
+    printf("2. Le dices que el primero que no sea niña. 🙅‍♂️\n");
+    printf("3. Le dices que no y te comes una galleta que estaba en su cuarto. 🍪😋\n");
+
+    int eleccion;
+    scanf("%d", &eleccion);
+
+    switch (eleccion) {
+        case 1:
+            escenaB1();
+            break;
+        case 2:
+            escenaB2();
+            break;
+        case 3:
+            escenaB3();
+            break;
+        default:
+            printf("No seas culón, elige de nuevo. 😒\n");
+            escenaA();
+    }
+}
+
+void escenaB1() {
+    printf("\n¡cof cof cof! ¿Dónde conseguiste esta hierba? 🌿\n");
+    printf("Me la vendió el vagabundo de la vuelta, me dijo que se llama rock moon o algo así.\n");
+    printf("¡Pongamos música! ¿Qué pongo? 🎶\n");
+    printf("_____________________________________\n");
+    // Opciones para la siguiente escena
+    printf("1. Rels B? 🎤\n");
+    printf("2. Aleman? \n");
+    printf("3. Paulo Londra? 🎵\n");
+
+    int eleccion;
+    scanf("%d", &eleccion);
+
+    switch (eleccion) {
+        case 1:
+            escenaC1();
+            break;
+        case 2:
+            escenaC2();
+            break;
+        case 3:
+            escenaC3();
+            break;
+        default:
+            printf("¡Otra vez de culo! Elige de nuevo. 😅\n");
+            escenaB1();
+    }
+}
+
+void escenaB2() {
+    printf("\n.Va, te digo que eres un culón desde niño. 😏\n");
+    printf("Uffff, qué buena está esta. Es una nueva, se llama rock moon. ¡Vas tú! 🚀\n");
+    printf("Está bien, deja probarla, ¿solo un jalón? 😮\n");
+    printf("¡Sí! ¡Está fuerte!\n");
+    printf("_____________________________________\n");
+
+    // Opciones para la siguiente escena
+    printf("1. ¡Pongamos música! 🎶\n");
+    printf("2. Creo que ya me pegó. 😵\n");
+    printf("3. Traigamos algo para comer. 🍔🍟\n");
+
+    int eleccion;
+    scanf("%d", &eleccion);
+
+    switch (eleccion) {
+        case 1:
+            escenaC1();
+            break;
+        case 2:
+            escenaC2();
+            break;
+        case 3:
+            escenaD3();
+            break;
+        default:
+            printf("¡Ya no te voy a aceptar esto! Elige de nuevo. 😒\n");
+            escenaB2();
+    }
+}
+
+void escenaB3() {
+    printf("\nÑam ñam... yo solo vengo a algo tranqui. 🍃📚\n");
+    printf("Es hora de estudiar.\n");
+    printf("Media hora después...\n");
+    printf("¿Qué haces?\n");
+    printf("Platico con este porro, jajaja. 🚬 ¿Ya te pegó? ¡¿Qué ya me drogué?! Hasta el piso, hermano. 😵\n");
+
+    // Opciones para la siguiente escena
+    printf("_____________________________________\n");
+    printf("1. Escucho una canción en mi cabeza. 🎵\n");
+    printf("2. Sabes, el porro me estaba explicando la teoría de cuerdas. 🤯\n");
+    printf("3. encerio quiero comer algo 🤔\n");
+
+    int eleccion;
+    scanf("%d", &eleccion);
+
+    switch (eleccion) {
+        case 1:
+            escenaC1();
+            break;
+        case 2:
+            escenaC2();
+            break;
+        case 3:
+            escenaD3();
+            break;
+        default:
+            printf("¡En serio te voy a matar! Elige de nuevo. 😡\n");
+            escenaB3();
+    }
+}
+
+void escenaC1() {
+    printf("\n!uffff rolon!\n");
+    printf("La conocí bailando Dale Don Dale\n"
+        "Estás tremenda nena, what is your planes?\n"
+        "Tengo el coche fuera cuando quieras sales\n"
+        "Si lo hacemo fuerte hasta empañar los cristales\n"
+        "Tiene caderas de modelo y ojos de gata\n"
+        "De cerca huele a caramelo, se ve bien guapa yeah\n"
+        "Lo que daría por un beso de esa flaca\n"
+        "No voy a preguntar si tiene novio por si aca' jaja\n"
+        "La conocí, me llamó la atención\n"
+        "Su forma de mover el boom-boom.\n");
+    printf("quieres conocer la teoria de cuerdas que me dijo el porro? \n");
+    printf("_____________________________________\n");
+    printf("1. no hagamos otra cosa.\n");
+    printf("2.si estaria bien .\n");
+    printf("3. tengo mucha hambre.\n");
+    int eleccion;
+    scanf("%d", &eleccion);
+
+    switch (eleccion) {
+        case 1:
+            escenaD1();
+            break;
+        case 2:
+            escenaC2();
+            break;
+        case 3:
+            escenaC3();
+            break;
+        default:
+            printf("¡Opción no válida! Elige de nuevo.\n");
+            escenaC1();
+    }
+    }
+
+
+
+void escenaC2() {
+    // ... (código de la escena C2)
+    printf("\n musica.....\n");
+    printf("yo y mi amigo porro creemos que la teroria de cuerda y la teoria del pendulo se pueden juntar en una misma ya que estas nos explican que el mudo se conjuta de vibraciones y las cuales estas afectan las deciciones del mundo probocando una y otras dimenciones en desorden y en orden al mismo tiempo\n");
+    printf("Woooow que fumado\n");
+    printf("_____________________________________\n");
+    printf("1. si estaria bien.\n");
+    printf("2. no hagamos otra cosa.\n");
+    printf("3. tengo mucha hambre.\n");
+  int eleccion;
+    scanf("%d", &eleccion);
+    switch (eleccion) {
+        case 1:
+      escenaD1();
+            break;
+        case 2:
+            escenaD2();
+            break;
+        case 3:
+        escenaC3();
+            break;
+        default:
+            printf("¡Opción no válida! Elige de nuevo.\n");
+        escenaC2();
+    }
+            
+}
+
+void escenaC3() {
+    // ... (código de la escena C3)
+     printf("\n musica.....\n");
+        printf("comamos algo riko unos hotdogs con cajeta y mayonesa! dios mio que riko\n");
+        printf("Woooow que fumado esto sabe muy bien\n");
+    printf("juguemos un juego?\n");
+    printf("_____________________________________\n");
+        printf("1.va veamos si pueo invocar alguien.\n");
+        printf("2.eso me da mucho miedo.\n");
+        printf("3. mejor solo veamos la tele.\n");
+      int eleccion;
+        scanf("%d", &eleccion);
+        switch (eleccion) {
+            case 1:
+          escenaD1();
+                break;
+            case 2:
+                escenaD2();
+                break;
+            case 3:
+            escenaD3();
+                break;
+            default:
+                printf("¡Opción no válida! Elige de nuevo.\n");
+            escenaC2();
+        }
+}
+
+void escenaD1() {
+    // ... (código de la escena D1)
+    printf("\n empieza halar en ebreo...\n");
+    printf("se esta habriendo un portaaaa\n");
+    printf("_____________________________________\n");
+    printf("1.entremos.\n");
+        printf("2.deja ver que hay dentro .\n");
+        printf("3.mira estooo.\n");
+    int eleccion;
+    scanf("%d",&eleccion);
+    switch (eleccion) {
+        case 1:
+            escenaE1();
+        break;
+        case 2:
+            escenaE2();
+            break;
+        case 3:
+        escenaE3();
+            break;
+        default:
+            printf("¡Opción no válida! Elige de nuevo.\n");
+        escenaD1();
+    }
+    
+}
+
+void escenaD2() {
+    // ... (código de la escena D2)
+    printf("\n siempre supe que eras marica!! empieza halar en ebreo...\n");
+    printf("se esta habriendo un portaaaal\n");
+    printf("1.entremos.\n");
+    printf("2.deja ver que hay dentro .\n");
+    printf("3.mira estooo.\n");
+    int eleccion;
+    scanf("%d",&eleccion);
+    switch (eleccion) {
+        case 1:
+            escenaE1();
+        break;
+        case 2:
+            escenaE2();
+            break;
+        case 3:
+        escenaE3();
+            break;
+        default:
+            printf("¡Opción no válida! Elige de nuevo.\n");
+        escenaD3();
+}
+}
+
+void escenaD3() {
+    // ... (código de la escena D3)
+    printf("\n esta bien ya viste el video de spider-man bailando en un tubo \n");
+    printf("no aver deja verlo?\n");
+    printf("se esconde y empieza a hablar en hebreo....");
+    printf("maldicion se esta habriendo un portal\n");
+    printf("_______________________________________________________\n");
+    printf("1.entremos.\n");
+    printf("2.deja ver que hay dentro .\n");
+    printf("3.mira estooo.\n");
+    int eleccion;
+    scanf("%d",&eleccion);
+    switch (eleccion) {
+        case 1:
+            escenaE1();
+        break;
+        case 2:
+            escenaE2();
+            break;
+        case 3:
+        escenaE3();
+            break;
+        default:
+            printf("¡Opción no válida! Elige de nuevo.\n");
+        escenaD3();
+    }
+}
+void escenaE1(){
+    printf("\n QUE DIALOS ESTA ES MI CASA\n");
+    printf("ven a ver esto broo\n");
+    printf("wooooow\n");
+    printf("_______________________________________________________\n");
+    printf("1.seguir explorando.\n");
+    printf("2.ir a prepararse algo a la cocina.\n");
+    printf("3.regresarse por el portal.\n");
+    int eleccion;
+    scanf("%d",&eleccion);
+    switch (eleccion) {
+        case 1:
+            escenaF1();
+        break;
+        case 2:
+            escenaF2();
+            break;
+        case 3:
+        escenaF3();
+            break;
+        default:
+            printf("¡Opción no válida! Elige de nuevo.\n");
+        escenaE1();
+    }
+}
+void escenaE2(){
+    printf("\n QUE DIALOS ESTA ES MI CASA\n");
+    printf("ven a ver esto broo\n");
+    printf("wooooow !hay que entrar!\n");
+    printf("_______________________________________________________\n");
+    printf("1.seguir explorando.\n");
+    printf("2.ir a prepararse algo a la cocina.\n");
+    printf("3.regresarse por el portal.\n");
+    int eleccion;
+    scanf("%d",&eleccion);
+    switch (eleccion) {
+        case 1:
+            printf("linea 4:20 demosle otro jalon al bong\n");
+            escenaF1();
+        break;
+        case 2:
+            escenaF2();
+            break;
+        case 3:
+        escenaF3();
+            break;
+        default:
+            printf("¡Opción no válida! Elige de nuevo.\n");
+        escenaE2();
+    }
+    
+}
+void escenaE3(){
+    printf("\n QUE DIALOS ESTA ES MI CASA\n");
+    printf("ven a ver esto broo\n");
+    printf("wooooow !hay que entrar!\n");
+    printf("_______________________________________________________\n");
+    printf("1.seguir explorando.\n");
+    printf("2.ir a prepararse algo a la cocina.\n");
+    printf("3.regresarse por el portal.\n");
+    int eleccion;
+    scanf("%d",&eleccion);
+    switch (eleccion) {
+        case 1:
+            escenaF1();
+        break;
+        case 2:
+            escenaF2();
+            break;
+        case 3:
+        escenaF3();
+            break;
+        default:
+            printf("¡ya avias durado mucho sin tus mamadas! Elige de nuevo.\n");
+        escenaE3();
+    }
+    
+}
+void escenaF1(){
+    printf("\nWEY MIRA SOY YO SENTADO\n");
+    printf("se escucha a lo lejos.....\n");
+    printf("arreglate vamos a ir a la casa de tu tia!\n");
+    printf("_______________________________________________________\n");
+    printf("1.ir a la cocina.\n");
+    printf("2.continuar.\n");
+    int eleccion;
+    scanf("%d",&eleccion);
+    switch (eleccion) {
+        case 1:
+            escenaF2();
+        break;
+        case 2:
+            escenaF3();
+            break;
+        default:
+            printf("¡ya avias durado mucho sin tus mamadas! Elige de nuevo.\n");
+        escenaF1();
+    }
+    
+}
+void escenaF2(){
+    printf("\nyo recuerdo que avia por aqui un sandiwch de mantequilla de mani con jalea\n");
+    printf("alguien entra....\n");
+    printf("se ven los dos yo al mismo tiempo\n");
+    printf("_______________________________________________________\n");
+    printf("1.seguir explorando.\n");
+    printf("2.ir a prepararse algo a la cocina.\n");
+    int eleccion;
+    scanf("%d",&eleccion);
+    switch (eleccion) {
+        case 1:
+            escenaF1();
+        break;
+        case 2:
+            escenaF3();
+            break;
+        default:
+            printf("¡ya avias durado mucho sin tus mamadas! Elige de nuevo.\n");
+        escenaF2();
+    }
+    
+    
+}
+void escenaF3(){
+    printf("\ncorre regresemos al portal\n");
+    printf("se esta cerrando....\n");
+    printf("se encuentra a su yo y se ven frente a frente...\n");
+    printf("_______________________________________________________\n");
+    printf("1.continuar.\n");
+    int eleccion;
+    scanf("%d",&eleccion);
+    switch (eleccion) {
+        case 1:
+            escenaG1();
+        break;
+        
+        default:
+            printf("¡ya avias durado mucho sin tus mamadas! Elige de nuevo.\n");
+        escenaF3();
+    }
+    
+}
+void escenaG1(){
+    printf("\nel universo colapsa....... \n Reiniciando realidad...\n");
+    
+    
+    escenaA2();
+    
+}
+void escenaA2(){
+    printf("\nEstás llegando a la casa de tu tía...\n");
+    printf("Tu primo sabe que llegas y te dice: 'Ve recargando la bong y date un pipazo para irnos adentrando en esta aventura'. 🌿💨\n");
+    printf("¿Qué haces?\n");
+    printf("_____________________________________\n");
+    // Opciones para la siguiente escena
+    printf("1. ¡Te das un bongazo! ¿Qué podría salir mal con un bongazo tan relajado? 😎\n");
+    printf("2. Le dices que el primero que no sea niña. 🙅‍♂️\n");
+    printf("3. Le dices que no y te comes una galleta que estaba en su cuarto. 🍪😋\n");
+
+    int eleccion;
+    scanf("%d", &eleccion);
+
+    switch (eleccion) {
+        case 1:
+            escenaA3();
+            break;
+        case 2:
+            escenaA3();
+            break;
+        case 3:
+            escenaA3();
+            break;
+        default:
+            printf("No seas culón, elige de nuevo. 😒\n");
+            escenaA2();
+    }
+}
+    void escenaA3(){
+        printf("gracias por jugar mi juego\n");
+        printf("creador : Daniel Alejandro Aldana Rubio ");
+        printf("registro:23310180\n");
+        printf("_____________________________________\n");
+        printf("1.jugar de nuevo.\n");
+        printf("salir preciona cualquier tecla meno :1.\n");
+        int elecion;
+        scanf(" %d",&elecion);
+        switch (elecion) {
+            case 1:
+            escenaA();
+            break; 
+            default:
+            printf("asta la proxima pinche marihuano\n");
+        }
+    }
+    
